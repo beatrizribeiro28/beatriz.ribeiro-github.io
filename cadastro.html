@@ -1,0 +1,78 @@
+<body>
+<link rel="stylesheet" href="styleatividade.css">
+    <footer>
+<header>
+    <h1>Cadastro ECOalize</h1>
+    <h2>Faça parte das nossas ações ambientais 🌱</h2>
+</header>
+
+<nav>
+
+    <label for="menu-toggle" class="menu-hamburguer">☰</label>
+
+    <div class="menu-links">
+        <a href="index.html">Início</a>
+        <a href="projetos.html">Projetos</a>
+        <a href="cadastro.html">Cadastro</a>
+    </div>
+</nav>
+<form action="inscriçãoconfirmada.html" method="GET">
+    <div class="formulario-container">
+ <div id="alerta-urgente" class="alerta-sistema">
+                    Modo seguro ativado. Todos os dados serão criptografados.
+                </div>
+		<h3>Preencha os dados</h3>
+<div class="grupo-campo">
+		<label root for="nome"></label>
+        <input class="input-moderno"type="text" id="nome" name="nome" 
+			   placeholder="Nome Completo"required>
+		<br>
+		<br>
+<div class="grupo-campo">
+		<label for="cep"></label>
+		<input type="text" class="input-moderno"id:"cep" name="CEP"
+			   pattern="[0-9]{5}-[0-9]{3}"
+			   placeholder="CEP 00000-0000" required>
+		<br>
+		<br>
+<div class="grupo-campo">
+		<label for="nascimento"></label>
+		<input type="date"class="input-moderno"id="nascimento" name="nascimento"
+			   placeholder="Data de nascimento" required>
+			<br>
+		<br>
+<div class="grupo-campo">
+		<label for="cpf"></label>
+		<input type="text" class="input-moderno" id="cpf" name="CPF"
+			   pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}"
+			   placeholder="CPF 000.000.000-00" required>
+		<br>
+<br>
+<div class="grupo-campo">
+       <label for="telefone"></label>
+        <input type="tel" class="input-moderno" id="telefone" name="telefone" 
+               pattern="[0-9]{7}-[0-9]{4}"
+			   placeholder="Telefone DDD00000-0000" required>
+<br>
+<br>
+<div class="grupo-campo">
+			<label for="text"></label>
+			<input type="email" class="input-moderno" id="email" input=name="Email"
+				   placeholder="Email@gmail.com" required>
+			<br>
+			<br>
+			<datalist id="voluntário">
+				<h2>Voluntário</h2>
+<option value="Doações">
+	<option value="Multirão de limpeza">
+		<option value="Voluntário">
+				</datalist>
+			<label for="voluntário">Como deseja participar:</label>  
+			<input list="voluntário" class="input-moderno" id="voluntário" name="voluntário"
+				   placeholder="Selecione uma opção" required><br><br>
+<a href="inscriçãoconfirmada.html">
+<button class="botao-primario" type="submit">Cadastrar</button>
+<footer>
+    <p>ECOalize o meio ambiente</p>
+    <p>Email: ECOalize123@gmail.com</p>
+</footer>
