@@ -1,0 +1,575 @@
+#menu-toggle {
+    display: none;
+}
+
+/* Botão hambúrguer */
+.menu-hamburguer {
+    display: none;
+    color: #ffffff;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Menu normal */
+.menu-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Menu para celulares */
+@media (max-width: 767px) {
+
+    nav {
+        position: relative;
+        justify-content: flex-end;
+    }
+
+    .menu-hamburguer {
+        display: block;
+    }
+
+    .menu-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        flex-direction: column;
+        gap: 15px;
+        width: 200px;
+        padding: 20px;
+        background: var(--cor-secundaria);
+    }
+
+    /* Quando o checkbox estiver marcado, mostra o menu */
+    #menu-toggle:checked ~ .menu-links {
+        display: flex;
+    }
+}
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --cor-primaria: #20B2AA;
+  --cor-secundaria: #168f89;
+  --cor-fundo: #f2f8f7;
+  --cor-texto: #263a39;
+  --cor-sucesso: #28a745;
+  --raio-borda: 15px;
+  --sombra-padrao: 0 3px 12px rgba(0, 0, 0, 0.10);
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.6;
+}
+section {
+  margin-bottom: 35px;
+}
+
+section h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO, BARRAS E NAVEGAÇÃO
+   ========================================================================== */
+.barra-com-texto {
+  background-color: var(--cor-primaria); 
+  color: #000000;              
+  padding: 10px 0;           
+  text-align: center;     
+  font-weight: bold; 
+  width: 100%;               
+}
+
+header {
+  background: var(--cor-primaria);
+  color: #ffffff;
+  text-align: center;
+  padding: 45px 20px;
+}
+
+header h1 {
+  margin: 0 0 10px;
+  font-size: 42px;
+}
+
+header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  padding: 15px;
+  background: var(--cor-secundaria);
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   3. CARDS, DIAGNÓSTICO E SEÇÕES GERAIS
+   ========================================================================== */
+.introducao {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-padrao);
+}
+
+/* Diagnóstico (Água, Terra e Ar) */
+.diagnostico {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-padrao);
+  display: flex;
+  flex-direction: column;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.card-ar { background-color: #f0f7fc; }
+.card-terra { background-color: #f3f8ee; }
+.card-agua { background-color: #eef7fb; }
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.card-header span { font-size: 32px; }
+
+.card-header h3 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.card-ar h3 { color: #1a5276; }
+.card-terra h3 { color: #1e5631; }
+.card-agua h3 { color: #005b96; }
+
+.subtitulo-balao {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.card-ar .subtitulo-balao { background-color: #5dade2; }
+.card-terra .subtitulo-balao { background-color: #52be80; }
+.card-agua .subtitulo-balao { background-color: #3498db; }
+
+.lista-acontece {
+  margin: 0 0 20px 0;
+  padding-left: 20px;
+  font-size: 14px;
+}
+
+.lista-acontece li { margin-bottom: 10px; }
+
+.bloco-destaque {
+  margin-top: auto;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.bloco-ar { background-color: #d6eaf8; }
+.bloco-terra { background-color: #d5f5e3; }
+.bloco-agua { background-color: #d4efdf; }
+
+.bloco-destaque h4 {
+  margin: 0 0 10px 0;
+  font-size: 15px;
+}
+
+.lista-poluentes, .lista-consequencias {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+}
+
+.lista-poluentes li, .lista-consequencias li { margin-bottom: 8px; }
+
+.grid-decomposicao {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  font-size: 12px;
+}
+
+/* Grid de Metas */
+.metas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.meta {
+  background: #ffffff;
+  padding: 25px 15px;
+  text-align: center;
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-padrao);
+}
+
+.meta strong {
+  display: block;
+  font-size: 30px;
+}
+
+/* Flexbox de Ações */
+.acoes {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.acao {
+  background: #ffffff;
+  padding: 25px;
+  width: 250px;
+  text-align: center;
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-padrao);
+}
+
+/* ==========================================================================
+   4. FORMULÁRIOS, INPUTS E ALERTAS
+   ========================================================================== */
+.formulario-container {
+  max-width: 850px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+}
+
+.formulario {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+
+.campo label {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.campo input,
+.campo select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #b9c9c7;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.campo-completo,
+.botao-area {
+  grid-column: 1 / -1;
+}
+
+.input-moderno {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  font-size: 1rem;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+.input-moderno:hover {
+  border-color: var(--cor-primaria);
+}
+
+.input-moderno:focus {
+  border-color: var(--cor-secundaria);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(32, 178, 170, 0.15);
+}
+
+.input-moderno:valid {
+  border-color: var(--cor-sucesso);
+  background-color: #f6fff8;
+}
+
+.alerta-sistema {
+  background-color: #eafaf1;
+  color: var(--cor-sucesso);
+  border-left: 4px solid var(--cor-sucesso);
+  padding: 12px 15px;
+  border-radius: 0 8px 8px 0;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+#alerta-urgente {
+  background-color: #fdf2e9;
+  color: #d35400;
+  border-left-color: #e67e22;
+}
+
+/* ==========================================================================
+   5. BOTÕES
+   ========================================================================== */
+button,
+.botao {
+  display: inline-block;
+  background: var(--cor-primaria);
+  color: #ffffff;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+button:hover,
+.botao:hover {
+  opacity: 0.85;
+}
+
+.botao-area {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.botao-primario {
+  background: var(--cor-primaria);
+  color: #ffffff;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.botao-primario:hover {
+  transform: translateY(-2px);
+  background-color: var(--cor-secundaria);
+}
+
+/* ==========================================================================
+   6. TABELAS E COMPONENTES EXTRAS
+   ========================================================================== */
+.tabela-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  box-shadow: var(--sombra-padrao);
+}
+
+th,
+td {
+  border: 1px solid #b9c9c7;
+  padding: 15px;
+  text-align: left;
+}
+
+th {
+  background: var(--cor-primaria);
+  color: #ffffff;
+}
+
+details {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+summary {
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   7. RODAPÉ
+   ========================================================================== */
+footer {
+  background: var(--cor-secundaria);
+  color: #ffffff;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 40px;
+}
+
+footer nav {
+  background: transparent;
+}
+
+/* ==========================================================================
+   1. ARQUITETURA MACROSCÓPICA - GRID BASE (Mobile-First)
+   ========================================================================== */
+.grid-container {
+  display: grid;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 16px;
+  gap: 16px;
+  /* Visualização vertical única para dispositivos móveis */
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-areas:
+    "barra"
+    "header"
+    "nav"
+    "main"
+    "footer";
+}
+
+/* Mapeamento dos elementos estruturais da ONG */
+.barra-com-texto { grid-area: barra; }
+header           { grid-area: header; }
+nav              { grid-area: nav; }
+main             { grid-area: main; }
+footer           { grid-area: footer; }
+
+
+/* ==========================================================================
+   2. BREAKPOINTS RESPONSIVOS (5 Cenários Adaptativos)
+   ========================================================================== */
+
+/* CENÁRIO 1: Phablets / Smart-Phones na Horizontal (≥ 480px) */
+@media (min-width: 480px) {
+  .grid-container {
+    padding: 0 20px;
+    gap: 16px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "barra  barra  barra  barra"
+      "header header header header"
+      "nav    nav    nav    nav"
+      "main   main   main   main"
+      "footer footer footer footer";
+  }
+
+  .metas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* CENÁRIO 2: Tablets em Modo Retrato / Ecrãs Médios (≥ 768px) */
+@media (min-width: 768px) {
+  .grid-container {
+    padding: 0 24px;
+    gap: 20px;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-areas:
+      "barra  barra  barra  barra  barra  barra  barra  barra"
+      "header header header header header header header header"
+      "nav    nav    nav    nav    nav    nav    nav    nav"
+      "main   main   main   main   main   main   main   main"
+      "footer footer footer footer footer footer footer footer";
+  }
+
+  .diagnostico {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* CENÁRIO 3: Desktops Padrão / Tablets na Horizontal (≥ 1024px) */
+@media (min-width: 1024px) {
+  .grid-container {
+    padding: 0 32px;
+    gap: 24px;
+    /* Ativação oficial do Sistema de 12 Colunas */
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas:
+      "barra  barra  barra  barra  barra  barra  barra  barra  barra  barra  barra  barra"
+      "header header header header header header header header header header header header"
+      "nav    nav    nav    nav    nav    nav    nav    nav    nav    nav    nav    nav"
+      "main   main   main   main   main   main   main   main   main   main   main   main"
+      "footer footer footer footer footer footer footer footer footer footer footer footer";
+  }
+
+  .diagnostico {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .metas {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* CENÁRIO 4: Desktops Grandes / Telas HD (≥ 1280px) */
+@media (min-width: 1280px) {
+  .grid-container {
+    gap: 32px;
+    padding: 0 40px;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+/* CENÁRIO 5: Desktops Panorâmicos / Monitores Ultra-Wide (≥ 1600px) */
+@media (min-width: 1600px) {
+  .grid-container {
+    max-width: 1800px;
+    padding: 0 48px;
+    gap: 40px;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
