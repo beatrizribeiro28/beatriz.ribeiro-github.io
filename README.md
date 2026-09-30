@@ -1,14 +1,19 @@
 🌱 ONG ECOalizar
+---
 
 Projeto de uma página web para a ONG ECOalizar, desenvolvido com HTML, CSS e JavaScript.
 
+---
 📌 Sobre o projeto
+---
 
 A aplicação apresenta a ONG, seus projetos e ações ambientais, além de permitir o cadastro de pessoas interessadas em participar ou realizar doações.
 
 O projeto possui múltiplas páginas e recursos interativos.
 
+---
 ✨ Funcionalidades
+---
 Página inicial da ONG
 Página de projetos
 Formulário de cadastro
@@ -20,7 +25,11 @@ Navegação entre as páginas
 Layout responsivo
 Interações utilizando JavaScript
 Build e otimização utilizando Vite
+
+---
 🛠️ Tecnologias utilizadas
+---
+
 HTML5
 CSS3
 JavaScript (ES6)
@@ -31,7 +40,11 @@ Vite
 Git
 GitHub
 GitHub Actions
+
+---
 📂 Estrutura do projeto
+---
+
 ONG ECOalizar/
 │
 ├── .github/
@@ -62,21 +75,27 @@ ONG ECOalizar/
 📄 Páginas
 🏠 Início
 
-Apresentação da ONG e informações sobre sua atuação.
-
+---
 🌱 Projetos
+---
 
 Apresentação dos projetos e ações ambientais da organização.
 
+---
 📝 Cadastro
+---
 
 Formulário para cadastro de interessados em participar da ONG ou realizar doações.
 
+---
 ✅ Inscrição confirmada
+---
 
 Página exibida após o envio do formulário.
 
+---
 💻 JavaScript
+---
 
 O JavaScript é organizado utilizando ES6 Modules.
 
@@ -87,24 +106,20 @@ js/storage.js — armazenamento e recuperação da preferência de tema utilizan
 
 O projeto utiliza o Vite para realizar o build da aplicação.
 
-Instalar dependências
-npm install
-Executar o projeto
-npm run dev
-Gerar a build
-npm run build
-Visualizar a build
-npm run preview
-
 A versão de produção é gerada na pasta dist/.
+---
 
+---
 🚀 Deploy
+---
 
 O projeto utiliza GitHub Actions para automatizar o processo de deploy.
 
+---
 O workflow está localizado em:
-
+---
 .github/workflows/deploy.yml
+-
 🔗 Repositório
 
 GitHub - ONG ECOaliza
