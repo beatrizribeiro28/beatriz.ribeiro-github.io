@@ -1,0 +1,45 @@
+name: Build e Deploy
+
+# O workflow é disparado a cada push na branch principal (main ou master)
+on:
+ branches:
+  - feature/sistema-ecoalizar
+
+# Permissões necessárias para publicar no GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  # 1. ETAPA DE BUILD
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o código do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar o Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Executar o Build
+        run: npm run build
+
+      - name: Compactar os artefatos para deploy (ex: pasta dist ou build)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist' # Mude para './build' ou a pasta gerada pelo seu framework
+
+  # 2. ETAPA DE DEPLOY
+  deploy:
+    needs: build # Garante que o deploy só roda se o build passar
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publicar no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
