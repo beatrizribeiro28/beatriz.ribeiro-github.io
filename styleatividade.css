@@ -1,8 +1,64 @@
+:root {
+  --cor-primaria: #20B2AA;
+  --cor-secundaria: #168f89;
+  --cor-fundo: #f2f8f7;
+  --cor-texto: #263a39;
+  --cor-sucesso: #28a745;
+  --raio-borda: 15px;
+  --sombra-padrao: 0 3px 12px rgba(0, 0, 0, 0.10);
+  --black: #000000;
+  --white: #ffffff;
+  --blue: #1E90FF;
+
+  /* DEFINIÇÃO DINÂMICA INICIAL (Tema Claro) */
+  --bg-dinamico: var(--cor-fundo);
+  --texto-dinamico: var(--cor-texto);
+}
+
+/* Quando o JS ativar a classe 'noite' no body, o CSS altera estas variáveis */
+body.noite {
+    --bg-dinamico: var(--black);
+    --texto-dinamico: var(--white);
+}
+
+/* Configuração do botão de trocar o tema */
+.botao-tema {
+    position: fixed; /* Fica preso na tela mesmo ao rolar a página */
+    top: 20px;       /* 20px de distância do topo */
+    right: 20px;     /* Alinha perfeitamente no canto DIREITO da tela */
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--white);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 9999;   /* Garante que ele fica por cima de qualquer elemento */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  /* CORREÇÃO AQUI: Agora obedece às variáveis dinâmicas que o JS altera */
+  background-color: var(--bg-dinamico) !important;
+  color: var(--texto-dinamico) !important;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Efeito suave ao mudar */
+}
+
+/* --- Estrutura do Menu e Componentes --- */
 #menu-toggle {
     display: none;
 }
 
-/* Botão hambúrguer */
 .menu-hamburguer {
     display: none;
     color: #ffffff;
@@ -10,7 +66,6 @@
     cursor: pointer;
 }
 
-/* Menu normal */
 .menu-links {
     display: flex;
     justify-content: center;
@@ -18,9 +73,7 @@
     gap: 25px;
 }
 
-/* Menu para celulares */
 @media (max-width: 767px) {
-
     nav {
         position: relative;
         justify-content: flex-end;
@@ -42,32 +95,11 @@
         background: var(--cor-secundaria);
     }
 
-    /* Quando o checkbox estiver marcado, mostra o menu */
     #menu-toggle:checked ~ .menu-links {
         display: flex;
     }
 }
-* {
-  box-sizing: border-box;
-}
 
-:root {
-  --cor-primaria: #20B2AA;
-  --cor-secundaria: #168f89;
-  --cor-fundo: #f2f8f7;
-  --cor-texto: #263a39;
-  --cor-sucesso: #28a745;
-  --raio-borda: 15px;
-  --sombra-padrao: 0 3px 12px rgba(0, 0, 0, 0.10);
-}
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: var(--cor-fundo);
-  color: var(--cor-texto);
-  line-height: 1.6;
-}
 section {
   margin-bottom: 35px;
 }
@@ -77,9 +109,6 @@ section h2 {
   margin-bottom: 25px;
 }
 
-/* ==========================================================================
-   2. CABEÇALHO, BARRAS E NAVEGAÇÃO
-   ========================================================================== */
 .barra-com-texto {
   background-color: var(--cor-primaria); 
   color: #000000;              
@@ -127,17 +156,23 @@ nav a:hover {
   text-decoration: underline;
 }
 
-/* ==========================================================================
-   3. CARDS, DIAGNÓSTICO E SEÇÕES GERAIS
-   ========================================================================== */
-.introducao {
+/* Modificadores de Cards para não sumirem no tema escuro */
+.introducao, .card, .meta {
   background: #ffffff;
+  color: #263a39; /* Mantém legível os textos internos dos cards */
   padding: 30px;
   border-radius: var(--raio-borda);
   box-shadow: var(--sombra-padrao);
 }
 
-/* Diagnóstico (Água, Terra e Ar) */
+body.noite .introducao, 
+body.noite .card, 
+body.noite .meta,
+body.noite .acao {
+  background: #2d3748; /* Tom cinza escuro para os cards no modo escuro */
+  color: #ffffff;
+}
+
 .diagnostico {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -145,10 +180,7 @@ nav a:hover {
 }
 
 .card {
-  background: #ffffff;
   padding: 25px;
-  border-radius: var(--raio-borda);
-  box-shadow: var(--sombra-padrao);
   display: flex;
   flex-direction: column;
 }
@@ -161,24 +193,9 @@ nav a:hover {
 .card-terra { background-color: #f3f8ee; }
 .card-agua { background-color: #eef7fb; }
 
-.card-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 15px;
-}
-
-.card-header span { font-size: 32px; }
-
-.card-header h3 {
-  margin: 0;
-  font-size: 28px;
-  font-weight: 800;
-}
-
-.card-ar h3 { color: #1a5276; }
-.card-terra h3 { color: #1e5631; }
-.card-agua h3 { color: #005b96; }
+body.noite .card-ar { background-color: #1a2634; }
+body.noite .card-terra { background-color: #1c2e24; }
+body.noite .card-agua { background-color: #172a3a; }
 
 .subtitulo-balao {
   display: inline-block;
@@ -191,10 +208,6 @@ nav a:hover {
   color: #ffffff;
 }
 
-.card-ar .subtitulo-balao { background-color: #5dade2; }
-.card-terra .subtitulo-balao { background-color: #52be80; }
-.card-agua .subtitulo-balao { background-color: #3498db; }
-
 .lista-acontece {
   margin: 0 0 20px 0;
   padding-left: 20px;
@@ -203,38 +216,6 @@ nav a:hover {
 
 .lista-acontece li { margin-bottom: 10px; }
 
-.bloco-destaque {
-  margin-top: auto;
-  padding: 15px;
-  border-radius: 12px;
-}
-
-.bloco-ar { background-color: #d6eaf8; }
-.bloco-terra { background-color: #d5f5e3; }
-.bloco-agua { background-color: #d4efdf; }
-
-.bloco-destaque h4 {
-  margin: 0 0 10px 0;
-  font-size: 15px;
-}
-
-.lista-poluentes, .lista-consequencias {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 13px;
-}
-
-.lista-poluentes li, .lista-consequencias li { margin-bottom: 8px; }
-
-.grid-decomposicao {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  font-size: 12px;
-}
-
-/* Grid de Metas */
 .metas {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -242,11 +223,8 @@ nav a:hover {
 }
 
 .meta {
-  background: #ffffff;
   padding: 25px 15px;
   text-align: center;
-  border-radius: var(--raio-borda);
-  box-shadow: var(--sombra-padrao);
 }
 
 .meta strong {
@@ -254,7 +232,6 @@ nav a:hover {
   font-size: 30px;
 }
 
-/* Flexbox de Ações */
 .acoes {
   display: flex;
   justify-content: center;
@@ -272,9 +249,6 @@ nav a:hover {
   box-shadow: var(--sombra-padrao);
 }
 
-/* ==========================================================================
-   4. FORMULÁRIOS, INPUTS E ALERTAS
-   ========================================================================== */
 .formulario-container {
   max-width: 850px;
   margin: 40px auto;
@@ -284,133 +258,25 @@ nav a:hover {
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
 }
 
-.formulario {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.campo {
-  display: flex;
-  flex-direction: column;
-}
-
-.campo label {
-  font-weight: bold;
-  margin-bottom: 6px;
-}
-
-.campo input,
-.campo select {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #b9c9c7;
-  border-radius: 8px;
-  font-size: 16px;
-}
-
-.campo-completo,
-.botao-area {
-  grid-column: 1 / -1;
-}
-
-.input-moderno {
-  width: 100%;
-  padding: 12px 15px;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  outline: none;
-  transition: all 0.3s ease;
-  font-family: inherit;
-  font-size: 1rem;
-  box-sizing: border-box;
-  background-color: #ffffff;
-}
-
-.input-moderno:hover {
-  border-color: var(--cor-primaria);
-}
-
-.input-moderno:focus {
-  border-color: var(--cor-secundaria);
-  background-color: #ffffff;
-  box-shadow: 0 0 0 4px rgba(32, 178, 170, 0.15);
-}
-
-.input-moderno:valid {
-  border-color: var(--cor-sucesso);
-  background-color: #f6fff8;
-}
-
-.alerta-sistema {
-  background-color: #eafaf1;
-  color: var(--cor-sucesso);
-  border-left: 4px solid var(--cor-sucesso);
-  padding: 12px 15px;
-  border-radius: 0 8px 8px 0;
-  font-weight: 500;
-  font-size: 0.9rem;
-  margin-bottom: 20px;
-}
-
-#alerta-urgente {
-  background-color: #fdf2e9;
-  color: #d35400;
-  border-left-color: #e67e22;
-}
-
-/* ==========================================================================
-   5. BOTÕES
-   ========================================================================== */
-button,
-.botao {
+button, .botao, .botao-primario {
   display: inline-block;
   background: var(--cor-primaria);
   color: #ffffff;
-  padding: 10px 22px;
+  padding: 12px 30px;
   border: none;
   border-radius: 8px;
   text-decoration: none;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.2s ease, opacity 0.2s ease;
-}
-
-button:hover,
-.botao:hover {
-  opacity: 0.85;
-}
-
-.botao-area {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.botao-primario {
-  background: var(--cor-primaria);
-  color: #ffffff;
-  padding: 12px 30px;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
   transition: transform 0.2s ease, background-color 0.2s ease;
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
 }
 
-.botao-primario:hover {
-  transform: translateY(-2px);
+button:hover, .botao:hover, .botao-primario:hover {
   background-color: var(--cor-secundaria);
+  transform: translateY(-2px);
 }
 
-/* ==========================================================================
-   6. TABELAS E COMPONENTES EXTRAS
-   ========================================================================== */
 .tabela-container {
   overflow-x: auto;
 }
@@ -422,8 +288,11 @@ table {
   box-shadow: var(--sombra-padrao);
 }
 
-th,
-td {
+body.noite table {
+  background: #2d3748;
+}
+
+th, td {
   border: 1px solid #b9c9c7;
   padding: 15px;
   text-align: left;
@@ -442,13 +311,14 @@ details {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
+body.noite details {
+  background: #2d3748;
+}
+
 summary {
   cursor: pointer;
 }
 
-/* ==========================================================================
-   7. RODAPÉ
-   ========================================================================== */
 footer {
   background: var(--cor-secundaria);
   color: #ffffff;
@@ -461,115 +331,7 @@ footer nav {
   background: transparent;
 }
 
-/* ==========================================================================
-   1. ARQUITETURA MACROSCÓPICA - GRID BASE (Mobile-First)
-   ========================================================================== */
 .grid-container {
   display: grid;
   width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 16px;
-  gap: 16px;
-  /* Visualização vertical única para dispositivos móveis */
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-areas:
-    "barra"
-    "header"
-    "nav"
-    "main"
-    "footer";
-}
-
-/* Mapeamento dos elementos estruturais da ONG */
-.barra-com-texto { grid-area: barra; }
-header           { grid-area: header; }
-nav              { grid-area: nav; }
-main             { grid-area: main; }
-footer           { grid-area: footer; }
-
-
-/* ==========================================================================
-   2. BREAKPOINTS RESPONSIVOS (5 Cenários Adaptativos)
-   ========================================================================== */
-
-/* CENÁRIO 1: Phablets / Smart-Phones na Horizontal (≥ 480px) */
-@media (min-width: 480px) {
-  .grid-container {
-    padding: 0 20px;
-    gap: 16px;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-areas:
-      "barra  barra  barra  barra"
-      "header header header header"
-      "nav    nav    nav    nav"
-      "main   main   main   main"
-      "footer footer footer footer";
-  }
-
-  .metas {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* CENÁRIO 2: Tablets em Modo Retrato / Ecrãs Médios (≥ 768px) */
-@media (min-width: 768px) {
-  .grid-container {
-    padding: 0 24px;
-    gap: 20px;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-areas:
-      "barra  barra  barra  barra  barra  barra  barra  barra"
-      "header header header header header header header header"
-      "nav    nav    nav    nav    nav    nav    nav    nav"
-      "main   main   main   main   main   main   main   main"
-      "footer footer footer footer footer footer footer footer";
-  }
-
-  .diagnostico {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* CENÁRIO 3: Desktops Padrão / Tablets na Horizontal (≥ 1024px) */
-@media (min-width: 1024px) {
-  .grid-container {
-    padding: 0 32px;
-    gap: 24px;
-    /* Ativação oficial do Sistema de 12 Colunas */
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-areas:
-      "barra  barra  barra  barra  barra  barra  barra  barra  barra  barra  barra  barra"
-      "header header header header header header header header header header header header"
-      "nav    nav    nav    nav    nav    nav    nav    nav    nav    nav    nav    nav"
-      "main   main   main   main   main   main   main   main   main   main   main   main"
-      "footer footer footer footer footer footer footer footer footer footer footer footer";
-  }
-
-  .diagnostico {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .metas {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* CENÁRIO 4: Desktops Grandes / Telas HD (≥ 1280px) */
-@media (min-width: 1280px) {
-  .grid-container {
-    gap: 32px;
-    padding: 0 40px;
-    grid-template-columns: repeat(12, 1fr);
-  }
-}
-
-/* CENÁRIO 5: Desktops Panorâmicos / Monitores Ultra-Wide (≥ 1600px) */
-@media (min-width: 1600px) {
-  .grid-container {
-    max-width: 1800px;
-    padding: 0 48px;
-    gap: 40px;
-    grid-template-columns: repeat(12, 1fr);
-  }
 }
